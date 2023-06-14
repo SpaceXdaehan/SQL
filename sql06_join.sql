@@ -136,7 +136,7 @@ SELECT e.ename, d.dname, e.sal, s.grade
 FROM emp e, dept d, salgrade s
 where e.deptno = d.deptno and e.sal between s.losal and s.hisal
 order by d.dname, s.grade;
-
+ 
 -- ex4. 부서 이름, 부서 위치, 부서의 직원수를 검색. 부서 번호 오름차순.
 SELECT d.dname, d.loc, count(*) as "직원수"
 FROM emp e
