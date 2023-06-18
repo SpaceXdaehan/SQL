@@ -20,4 +20,4 @@ SELECT * FROM EMP;
 SELECT * FROM emp;
 select * from EMP;
 
--- 테이블에 저장된 데이터는 대/소문자를 구분함!
+-- 테이블에 저장된 데이터는 대/소문자를 구분함! 
