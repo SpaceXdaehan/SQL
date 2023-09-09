@@ -1,0 +1,88 @@
+--------------------------------------------------------
+--  파일이 생성됨 - 금요일-8월-18-2023   
+--------------------------------------------------------
+--------------------------------------------------------
+--  DDL for Table RELIGION
+--------------------------------------------------------
+
+  CREATE TABLE "SKOTT"."RELIGION" 
+   (	"RELIGION_ID" NUMBER(10,0), 
+	"RELIGION_NAME" VARCHAR2(20 CHAR)
+   ) SEGMENT CREATION IMMEDIATE 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+REM INSERTING into SKOTT.RELIGION
+SET DEFINE OFF;
+Insert into SKOTT.RELIGION (RELIGION_ID,RELIGION_NAME) values (3,'불교');
+Insert into SKOTT.RELIGION (RELIGION_ID,RELIGION_NAME) values (1,'기독교');
+Insert into SKOTT.RELIGION (RELIGION_ID,RELIGION_NAME) values (2,'천주교');
+Insert into SKOTT.RELIGION (RELIGION_ID,RELIGION_NAME) values (4,'무교');
+--------------------------------------------------------
+--  DDL for Index RELIGION_PK
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "SKOTT"."RELIGION_PK" ON "SKOTT"."RELIGION" ("RELIGION_ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 COMPUTE STATISTICS 
+  STORAGE(INITIAL 65536 NEXT 1048576 MINEXTENTS 1 MAXEXTENTS 2147483645
+  PCTINCREASE 0 FREELISTS 1 FREELIST GROUPS 1
+  BUFFER_POOL DEFAULT FLASH_CACHE DEFAULT CELL_FLASH_CACHE DEFAULT)
+  TABLESPACE "USERS" ;
+--------------------------------------------------------
+--  DDL for Trigger RELIGION_TRG
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SKOTT"."RELIGION_TRG" 
+BEFORE INSERT ON RELIGION 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SKOTT"."RELIGION_TRG" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger RELIGION_TRG1
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SKOTT"."RELIGION_TRG1" 
+BEFORE INSERT ON RELIGION 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    NULL;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SKOTT"."RELIGION_TRG1" ENABLE;
+--------------------------------------------------------
+--  DDL for Trigger RELIGION_TRG2
+--------------------------------------------------------
+
+  CREATE OR REPLACE NONEDITIONABLE TRIGGER "SKOTT"."RELIGION_TRG2" 
+BEFORE INSERT ON RELIGION 
+FOR EACH ROW 
+BEGIN
+  <<COLUMN_SEQUENCES>>
+  BEGIN
+    IF INSERTING AND :NEW.RELIGION_ID IS NULL THEN
+      SELECT RELIGION_SEQ1.NEXTVAL INTO :NEW.RELIGION_ID FROM SYS.DUAL;
+    END IF;
+  END COLUMN_SEQUENCES;
+END;
+/
+ALTER TRIGGER "SKOTT"."RELIGION_TRG2" ENABLE;
+--------------------------------------------------------
+--  Constraints for Table RELIGION
+--------------------------------------------------------
+
+  ALTER TABLE "SKOTT"."RELIGION" MODIFY ("RELIGION_ID" NOT NULL ENABLE);
+  ALTER TABLE "SKOTT"."RELIGION" MODIFY ("RELIGION_NAME" NOT NULL ENABLE);
+  ALTER TABLE "SKOTT"."RELIGION" ADD CONSTRAINT "RELIGION_PK" PRIMARY KEY ("RELIGION_ID")
+  USING INDEX "SKOTT"."RELIGION_PK"  ENABLE;
